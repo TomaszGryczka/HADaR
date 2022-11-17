@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HadarUploadImagesComponent } from './hadar-upload-images/hadar-upload-images.component';
+import { HadarStatisticsComponent } from './hadar-statistics/hadar-statistics.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HadarUploadImagesComponent,
+    HadarStatisticsComponent
   ],
   imports: [
     BrowserModule,
