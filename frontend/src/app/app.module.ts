@@ -7,6 +7,7 @@ import {HadarUploadImagesComponent} from './hadar-upload-images/hadar-upload-ima
 import {HadarStatisticsComponent} from './hadar-statistics/hadar-statistics.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {FileUploadComponent} from './file-upload/file-upload.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {FileUploadComponent} from './file-upload/file-upload.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     ReactiveFormsModule
   ],
   providers: [],
