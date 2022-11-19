@@ -2,9 +2,10 @@
   <div class="form-group ms-2">
     <label class="form-label">Upload file and add hour</label>
     <div class="d-flex">
-      <input class="form-control w-50" formControlName="image" type="file">
+      <input class="form-control w-50" formControlName="image"
+             type="file" (change)="onImageChange($any($event.target).files)">
       <input class="form-control w-25 ms-2" formControlName="hour" type="time" placeholder="e.g. 18">
     </div>
-    <button type="submit" class="btn btn-primary mt-2" [disabled]="!uploadImageForm.valid">Submit</button>
+    <button type="submit" class="btn btn-primary mt-2" [disabled]="uploadImageForm.invalid">Submit</button>
   </div>
 </form>

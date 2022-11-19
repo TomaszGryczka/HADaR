@@ -18,6 +18,7 @@ export class FileUploadComponent implements OnInit {
 
     this.uploadImageForm = this.formBuilder.group({
       image: new FormControl(null, [Validators.required, requiredFileType('png')]),
+      imageSource: new FormControl(null, [Validators.required]),
       hour: new FormControl(null, [Validators.required, hourRange(16, 4)])
     });
   }
@@ -25,14 +26,25 @@ export class FileUploadComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onImageChange(files: File[]) {
+    const image = files[0];
+    this.uploadImageForm.patchValue({
+      imageSource: image
+    });
+  }
+
   onSubmit() {
     const formData = new FormData();
-    formData.append('file', this.uploadImageForm.get('image')?.value);
-    formData.append('hour', this.uploadImageForm.get('hour')?.value);
+    formData.append('file', this.uploadImageForm.get('imageSource')?.value);
+    formData.append('hour', this.convertTimeToHours(this.uploadImageForm.get('hour')?.value));
 
     this.uploadImageGateway.uploadFileWithHour(formData).subscribe(() => {
       console.log("Success!");
     });
+  }
+
+  private convertTimeToHours(time: any): string {
+    return time.toString().split(":")[0];
   }
 
 }

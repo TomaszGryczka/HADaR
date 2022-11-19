@@ -12,7 +12,7 @@ export class UploadImageGatewayService {
   constructor(private http: HttpClient) {
   }
 
-  uploadFileWithHour(formData: FormData): Observable<any> {
-    return this.http.put<any>(this.apiUrl, formData);
+  uploadFileWithHour(formData: FormData): Observable<string> {
+    return this.http.put(this.apiUrl, formData, {responseType: "text"});
   }
 }
