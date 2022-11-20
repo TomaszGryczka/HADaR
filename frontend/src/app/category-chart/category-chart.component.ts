@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {AfterViewInit, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import Chart from 'chart.js/auto';
 import {ChartConfig} from "../app.component";
 
@@ -27,7 +27,7 @@ export class CategoryChartComponent implements AfterViewInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.chartData) {
-      if(this.chart) {
+      if (this.chart) {
         this.chart.destroy();
       }
       this.createChart();
@@ -38,7 +38,7 @@ export class CategoryChartComponent implements AfterViewInit, OnChanges {
     if (!!this.chartData) {
       this.chartId = "category-chart-" + this.chartData.categoryName.toLowerCase();
       console.log(document.getElementById(this.chartId))
-      if(document.getElementById(this.chartId)) {
+      if (document.getElementById(this.chartId)) {
         this.chart = new Chart(this.chartId, {
           type: 'bar',
           data: {
@@ -58,41 +58,32 @@ export class CategoryChartComponent implements AfterViewInit, OnChanges {
                   this.chartData.averageActionsPerHour["2"],
                   this.chartData.averageActionsPerHour["3"],
                   this.chartData.averageActionsPerHour["4"],
-                  ],
-                backgroundColor: 'blue'
+                ],
+                backgroundColor: this.chartData.colour
               }
             ]
           },
           options: {
-            aspectRatio: 2.5
+            aspectRatio: 2.5,
+            scales: {
+              y: {
+                title: {
+                  display: true,
+                  text: 'Probability'
+                }
+              },
+              x: {
+                title: {
+                  display: true,
+                  text: 'Hour'
+                }
+              }
+            }
           }
         });
       }
     }
   }
-
-  // createChart() {
-  //   if (!!this.chartData) {
-  //     this.chart = new Chart("category-chart", {
-  //       type: 'bar',
-  //       data: {
-  //         labels: ['2022-05-10', '2022-05-11', '2022-05-12', '2022-05-13',
-  //           '2022-05-14', '2022-05-15', '2022-05-16', '2022-05-17',],
-  //         datasets: [
-  //           {
-  //             label: "Sales",
-  //             data: ['467', '576', '572', '79', '92',
-  //               '574', '573', '576'],
-  //             backgroundColor: 'blue'
-  //           }
-  //         ]
-  //       },
-  //       options: {
-  //         aspectRatio: 2.5
-  //       }
-  //     });
-  //   }
-  // }
 }
 
 

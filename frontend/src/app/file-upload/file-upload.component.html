@@ -1,6 +1,6 @@
 <form [formGroup]="uploadImageForm" (submit)="onSubmit()">
   <div class="form-group ms-2">
-    <label class="form-label">Upload file and add hour</label>
+    <label class="form-label">Upload file and add an hour</label>
     <div class="d-flex">
       <input class="form-control w-50" formControlName="image"
              type="file" (change)="onImageChange($any($event.target).files)">

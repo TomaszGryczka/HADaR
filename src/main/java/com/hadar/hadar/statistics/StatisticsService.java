@@ -42,10 +42,11 @@ public class StatisticsService {
             "hugging", new CategoryChartData()
     );
 
-    public void uploadImageAndGenerateStatistics(final MultipartFile multipartFile, final String hour) {
+    public void uploadImageAndGenerateStatistics(final MultipartFile multipartFile, String hour) {
         final String filename = multipartFile.getOriginalFilename();
         String uploadedImageUrl;
 
+        hour = hour.replaceFirst("^0+(?!$)", "");
         logger.info("Got file: " + filename + " at " + hour);
 
         try {

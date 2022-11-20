@@ -24,27 +24,33 @@ export class AppComponent implements OnInit {
         this.chartConfigs = [
           {
             categoryName: "Calling",
-            averageActionsPerHour: resp.calling.averageActionsPerHour
+            averageActionsPerHour: resp.calling.averageActionsPerHour,
+            colour: "red"
           },
           {
             categoryName: "Dancing",
-            averageActionsPerHour: resp.dancing.averageActionsPerHour
+            averageActionsPerHour: resp.dancing.averageActionsPerHour,
+            colour: "blue"
           },
           {
             categoryName: "Drinking",
-            averageActionsPerHour: resp.drinking.averageActionsPerHour
+            averageActionsPerHour: resp.drinking.averageActionsPerHour,
+            colour: "green"
           },
           {
             categoryName: "Eating",
-            averageActionsPerHour: resp.eating.averageActionsPerHour
+            averageActionsPerHour: resp.eating.averageActionsPerHour,
+            colour: "yellow"
           },
           {
             categoryName: "Fighting",
-            averageActionsPerHour: resp.fighting.averageActionsPerHour
+            averageActionsPerHour: resp.fighting.averageActionsPerHour,
+            colour: "black"
           },
           {
             categoryName: "Hugging",
-            averageActionsPerHour: resp.hugging.averageActionsPerHour
+            averageActionsPerHour: resp.hugging.averageActionsPerHour,
+            colour: "grey"
           }
         ];
       });
@@ -55,5 +61,6 @@ export class AppComponent implements OnInit {
 
 export interface ChartConfig {
   categoryName: string,
-  averageActionsPerHour: AverageActionsPerHour;
+  averageActionsPerHour: AverageActionsPerHour,
+  colour: string
 }
