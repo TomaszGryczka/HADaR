@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -42,7 +41,7 @@ public class StatisticsService {
             "hugging", new CategoryChartData()
     );
 
-    public void uploadImageAndGenerateStatistics(final MultipartFile multipartFile, String hour) {
+    public String uploadImageAndGenerateStatistics(final MultipartFile multipartFile, String hour) {
         final String filename = multipartFile.getOriginalFilename();
         String uploadedImageUrl;
 
@@ -55,8 +54,7 @@ public class StatisticsService {
             logger.error("Failed to save" + filename + "in blob storage");
             throw new RuntimeException(e);
         }
-
-        logger.info(uploadedImageUrl);
+        logger.debug(uploadedImageUrl);
 
         final ImagePrediction result = predictor.predictions()
                 .classifyImageUrl(
@@ -66,16 +64,18 @@ public class StatisticsService {
                         new ClassifyImageUrlOptionalParameter()
                 );
 
-        logger.info("Logging predictions:");
+        logger.debug("Logging predictions:");
         result.predictions().forEach(prediction ->
-                logger.info(prediction.tagName() + " -> " + prediction.probability()));
+                logger.debug(prediction.tagName() + " -> " + prediction.probability()));
 
         addPredictionsToCategoryStatistics(result.predictions(), hour);
+
+        return uploadedImageUrl;
     }
 
     private void addPredictionsToCategoryStatistics(final List<Prediction> predictions, final String hour) {
         predictions.forEach(prediction -> {
-            if(prediction.probability() > PROBABILITY_THRESHOLD) {
+            if (prediction.probability() > PROBABILITY_THRESHOLD) {
                 categories.get(prediction.tagName()).addActionToAverage(hour);
             }
         });
@@ -84,7 +84,7 @@ public class StatisticsService {
     // to test only
     public void logChartData() {
         try {
-            logger.info(objectMapper.writeValueAsString(categories));
+            logger.debug(objectMapper.writeValueAsString(categories));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
