@@ -15,7 +15,22 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compileOnly 'org.projectlombok:lombok:1.18.24'
+	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+	annotationProcessor group: 'org.springframework.boot', name: 'spring-boot-configuration-processor'
+	implementation 'org.apache.httpcomponents:httpclient:4.5'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testCompileOnly 'org.projectlombok:lombok:1.18.24'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+	// custom vision dependencies
+	implementation 'com.azure:azure-cognitiveservices-customvision-prediction:1.1.0-preview.2'
+	implementation 'com.azure:azure-cognitiveservices-customvision-training:1.1.0-preview.2'
+
+	// blob storage
+	implementation 'com.azure:azure-storage-blob:12.20.1'
 }
 
 tasks.named('test') {

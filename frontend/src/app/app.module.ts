@@ -8,13 +8,15 @@ import {HadarStatisticsComponent} from './hadar-statistics/hadar-statistics.comp
 import {ReactiveFormsModule} from "@angular/forms";
 import {FileUploadComponent} from './file-upload/file-upload.component';
 import {HttpClientModule} from "@angular/common/http";
+import { CategoryChartComponent } from './category-chart/category-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HadarUploadImagesComponent,
     HadarStatisticsComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    CategoryChartComponent
   ],
   imports: [
     BrowserModule,

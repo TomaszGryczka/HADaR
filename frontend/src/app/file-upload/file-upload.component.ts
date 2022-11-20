@@ -38,8 +38,8 @@ export class FileUploadComponent implements OnInit {
     formData.append('file', this.uploadImageForm.get('imageSource')?.value);
     formData.append('hour', this.convertTimeToHours(this.uploadImageForm.get('hour')?.value));
 
-    this.uploadImageGateway.uploadFileWithHour(formData).subscribe(() => {
-      console.log("Success!");
+    this.uploadImageGateway.uploadFileWithHour(formData).subscribe((response) => {
+      console.log("Success! Path to file " + response);
     });
   }
 
