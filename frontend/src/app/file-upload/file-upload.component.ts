@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {hourRange, requiredFileType} from "./upload-image-validators";
 import {UploadImageGatewayService} from "../service/upload-image-gateway.service";
@@ -9,6 +9,9 @@ import {UploadImageGatewayService} from "../service/upload-image-gateway.service
   styleUrls: ['./file-upload.component.css']
 })
 export class FileUploadComponent implements OnInit {
+
+  @Output()
+  fileUploaded = new EventEmitter<boolean>();
 
   uploadImageForm: FormGroup;
 
@@ -39,7 +42,7 @@ export class FileUploadComponent implements OnInit {
     formData.append('hour', this.convertTimeToHours(this.uploadImageForm.get('hour')?.value));
 
     this.uploadImageGateway.uploadFileWithHour(formData).subscribe((response) => {
-      console.log("Success! Path to file " + response);
+      this.fileUploaded.emit(true);
     });
   }
 

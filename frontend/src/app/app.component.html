@@ -1,1 +1,7 @@
-<app-hadar-upload-images></app-hadar-upload-images>
+<app-hadar-upload-images (allFilesUploaded)="fetchChartData($event)"></app-hadar-upload-images>
+<div class="row" *ngIf="chartConfigs">
+  <div class="col-6" *ngFor="let config of chartConfigs">
+    <app-category-chart [chartData]="config"></app-category-chart>
+  </div>
+</div>
+

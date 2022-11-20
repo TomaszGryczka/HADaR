@@ -1,4 +1,4 @@
-<div class="w-50">
-  <canvas id="category-chart">{{chart}}</canvas>
+<div *ngIf="!!chartData && chartId" class="w-75">
+  <canvas [id]=chartId>{{chart}}</canvas>
 </div>
 
