@@ -7,7 +7,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class UploadImageGatewayService {
 
-  private readonly apiUrl = "http://localhost:8080/file/upload";
+  private readonly apiUrl = "https://hadar-backend.azurewebsites.net/file/upload";
 
   constructor(private http: HttpClient) {
   }
