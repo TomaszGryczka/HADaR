@@ -12,13 +12,13 @@ export function hourRange(from: number, to: number): ValidatorFn {
   }
 }
 
-export function requiredFileType(type: string): ValidatorFn {
+export function requiredFileType(type: string[]): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     const file = control.value;
     if (file) {
       const extension = file.split('.')[1].toLowerCase();
-      console.log(extension.toLowerCase() === type.toString().toLowerCase())
-      if (extension.toLowerCase() === type.toString().toLowerCase()) {
+      const properExtension = type.indexOf(extension);
+      if (properExtension != -1) {
         return null;
       }
     }

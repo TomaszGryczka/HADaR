@@ -15,16 +15,21 @@ export class FileUploadComponent implements OnInit {
 
   uploadImageForm: FormGroup;
 
+
+
   constructor(
     private uploadImageGateway: UploadImageGatewayService,
     private formBuilder: FormBuilder) {
 
     this.uploadImageForm = this.formBuilder.group({
-      image: new FormControl(null, [Validators.required, requiredFileType('png')]),
+      image: new FormControl(null, [Validators.required, requiredFileType(['png','jpg','jpeg'])]),
       imageSource: new FormControl(null, [Validators.required]),
       hour: new FormControl(null, [Validators.required, hourRange(16, 4)])
     });
+
   }
+
+
 
   ngOnInit(): void {
   }
@@ -44,10 +49,11 @@ export class FileUploadComponent implements OnInit {
     this.uploadImageGateway.uploadFileWithHour(formData).subscribe((response) => {
       this.fileUploaded.emit(true);
     });
+
   }
 
   private convertTimeToHours(time: any): string {
-    return time.toString().split(":")[0];
+    return time.toString().split(":")[0];time.toString().split(":")[0]
   }
 
 }
