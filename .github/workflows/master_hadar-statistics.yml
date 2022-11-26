@@ -25,7 +25,7 @@ jobs:
         run: |
           cd ./frontend
           npm install
-          npm run build --configuration production --if-present
+          npm run build --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
