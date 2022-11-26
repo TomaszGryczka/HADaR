@@ -23,4 +23,13 @@ public class AzureCustomVisionConfig {
                 .authenticate(properties.getPredictionEndpoint(), properties.getPredictionKey())
                 .withEndpoint(properties.getPredictionEndpoint());
     }
+
+    @Bean
+    public CustomVisionPredictionClient predictorDetection() {
+        return CustomVisionPredictionManager
+                .authenticate(properties.getPredictionDetectionEndpoint(), properties.getPredictionDetectionKey())
+                .withEndpoint(properties.getPredictionDetectionEndpoint());
+    }
+
+
 }

@@ -1,6 +1,9 @@
 package com.hadar.hadar;
 
+import com.hadar.hadar.statistics.HoursActionsCount;
 import lombok.Getter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -13,26 +16,38 @@ public class CategoryChartData {
     private final HashMap<String, Integer> actionsPerHour;
     @Getter
     private final HashMap<String, Double> averageActionsPerHour;
-    private int sumOfActions;
+    HoursActionsCount hac;
 
-    public CategoryChartData() {
+    public CategoryChartData( HoursActionsCount hac) {
+        this.hac = hac;
+
         actionsPerHour = new HashMap<>();
         averageActionsPerHour = new HashMap<>();
         hours.forEach(hour -> {
             averageActionsPerHour.put(hour, 0.0);
             actionsPerHour.put(hour, 0);
         });
-        sumOfActions = 0;
+
     }
 
     public void addActionToAverage(String actionHour) {
-        sumOfActions += 1;
-        final int prevNumOfActionsInHour = actionsPerHour.get(actionHour);
-        final int currentNumOfActionsInHour = prevNumOfActionsInHour + 1;
-        actionsPerHour.put(actionHour, currentNumOfActionsInHour);
+
+        int prevNumOfActions=actionsPerHour.get(actionHour);
+        int currNumOfActions=prevNumOfActions+1;
+        actionsPerHour.put(actionHour,currNumOfActions);
+
         hours.forEach(hour -> {
-            final double average = Double.valueOf(actionsPerHour.get(hour)) / sumOfActions;
+            final double average = Double.valueOf(actionsPerHour.get(hour)) / hac.getAllActionsInHour(hour);
+            averageActionsPerHour.put(hour, average);
+        });
+    };
+
+    public void refreshActionStatistics(){
+        hours.forEach(hour -> {
+            final double average = Double.valueOf(actionsPerHour.get(hour)) / hac.getAllActionsInHour(hour);
             averageActionsPerHour.put(hour, average);
         });
     }
+
 }
+

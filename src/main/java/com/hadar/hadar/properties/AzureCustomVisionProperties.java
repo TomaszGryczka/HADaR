@@ -17,4 +17,11 @@ public class AzureCustomVisionProperties {
     private String predictionKey;
     @NotBlank
     private String projectUuid;
+
+    @NotBlank
+    private String predictionDetectionEndpoint;
+    @NotBlank
+    private String predictionDetectionKey;
+    @NotBlank
+    private String projectDetectionUuid;
 }
