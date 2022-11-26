@@ -67,6 +67,7 @@ export class CategoryChartComponent implements AfterViewInit, OnChanges {
             aspectRatio: 2.5,
             scales: {
               y: {
+                max: 1,
                 title: {
                   display: true,
                   text: 'Probability'
