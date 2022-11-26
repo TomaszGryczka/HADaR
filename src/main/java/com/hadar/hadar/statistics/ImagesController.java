@@ -6,7 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/file")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://hadar-statistics.azurewebsites.net")
 @RequiredArgsConstructor
 public class ImagesController {
 

@@ -13,7 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/statistics")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://hadar-statistics.azurewebsites.net")
 @RequiredArgsConstructor
 public class StatisticsController {
 
