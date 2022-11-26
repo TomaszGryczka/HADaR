@@ -26,12 +26,15 @@ jobs:
           cd ./frontend
           npm install
           npm run build --if-present
+          
+      - name: Zip artifact for deployment
+        run: zip release.zip ./frontend/* -qr -x "node_modules/*" "dist/*"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: ./dist/
+          path: ./frontend/release.zip
 
   deploy:
     runs-on: ubuntu-latest
