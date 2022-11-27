@@ -7,9 +7,9 @@ import {Observable} from "rxjs";
 })
 export class StatisticsGatewayService {
 
-  private readonly apiUrl = "http://localhost:8080/statistics";
+  private readonly apiUrl = "https://hadar-backend.azurewebsites.net/statistics";
 
-  private readonly apiPeopleUrl = "http://localhost:8080/people";
+  private readonly apiPeopleUrl = "https://hadar-backend.azurewebsites.net/people";
 
   constructor(private http: HttpClient) {
   }
