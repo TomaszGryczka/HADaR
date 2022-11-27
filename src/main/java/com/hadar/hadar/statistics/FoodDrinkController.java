@@ -29,6 +29,11 @@ public class FoodDrinkController {
         Map<String,Double> returnFood = statisticsService.getFinalFood();
         Map<String,Double> returnDrink =statisticsService.getFinalDrink();
 
+        for(String h:hours){
+            returnFood.putIfAbsent(h, 0.0);
+            returnDrink.putIfAbsent(h,0.0);
+        }
+
         returnVal.add(returnFood);
         returnVal.add(returnDrink);
 
