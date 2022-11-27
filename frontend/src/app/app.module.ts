@@ -9,6 +9,7 @@ import {FileUploadComponent} from './file-upload/file-upload.component';
 import {HttpClientModule} from "@angular/common/http";
 import { CategoryChartComponent } from './category-chart/category-chart.component';
 import { PeopleChartComponent } from './people-chart/people-chart.component';
+import { FoodDrinkChartComponent } from './food-drink-chart/food-drink-chart.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PeopleChartComponent } from './people-chart/people-chart.component';
     HadarUploadImagesComponent,
     FileUploadComponent,
     CategoryChartComponent,
-    PeopleChartComponent
+    PeopleChartComponent,
+    FoodDrinkChartComponent
   ],
   imports: [
     BrowserModule,

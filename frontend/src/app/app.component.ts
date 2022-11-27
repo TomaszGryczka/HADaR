@@ -8,9 +8,13 @@ import {AverageActionsPerHour, FinalPeoplePerHour, StatisticsGatewayService} fro
 })
 export class AppComponent implements OnInit {
   title = 'frontend';
-  chartConfigs?: ChartConfig[];
 
+  chartConfigs?: ChartConfig[];
   peopleChartConfig?: PeopleChartConfig;
+  foodDrinkConfigs?: FoodDrinkConfig[];
+
+  foodChartConfig?:FoodDrinkConfig;
+  drinkChartConfig?:FoodDrinkConfig;
 
   constructor(private statisticsGateway: StatisticsGatewayService) {
   }
@@ -67,9 +71,31 @@ export class AppComponent implements OnInit {
       colour: "Brown"
       }
 
+     });
+
+      this.statisticsGateway.getFoodDrinkChartStatistics().subscribe(resp =>{
+
+      this.foodDrinkConfigs = [
+      {
+      categoryName: "Food",
+      finalPeople: resp[0],
+      colour: "orange"
+      },
+      {
+      categoryName: "Drink",
+      finalPeople: resp[1],
+      colour: "pink"
+      }
+      ];
+
+      this.foodChartConfig=this.foodDrinkConfigs[0];
+      this.drinkChartConfig=this.foodDrinkConfigs[1];
+
+     });
 
 
-      });
+
+
 
     }
   }
@@ -82,6 +108,12 @@ export interface ChartConfig {
 }
 //DODANE
 export interface PeopleChartConfig {
+  categoryName: string,
+  finalPeople: FinalPeoplePerHour,
+  colour: string
+}
+
+export interface FoodDrinkConfig {
   categoryName: string,
   finalPeople: FinalPeoplePerHour,
   colour: string

@@ -48,15 +48,18 @@ public class StatisticsService {
 
     @Getter
     private Map<String, Integer> people= new HashMap<>();
-
     @Getter
     private Map<String, Double> finalPeople = new HashMap<>();
 
     @Getter
     private Map<String, Integer> food= new HashMap<>();
+    @Getter
+    private Map<String, Double> finalFood= new HashMap<>();
 
     @Getter
     private Map<String, Integer> drink= new HashMap<>();
+    @Getter
+    private Map<String, Double> finalDrink= new HashMap<>();
 
     @Getter
     private Map<String, Integer> imagesPerHour = new HashMap<>();
@@ -137,6 +140,25 @@ public class StatisticsService {
 
         for(String h:hours){
             finalPeople.putIfAbsent(h, 0.0);
+            food.putIfAbsent(h,0);
+            drink.putIfAbsent(h,0);
+        }
+
+        if(finalPeople.get(hour) <=0){
+            finalFood.put(hour,(double)(food.get(hour)));
+            finalDrink.put(hour,(double)(drink.get(hour)));
+        }else{
+
+            finalFood.put(hour, (food.get(hour)/finalPeople.get(hour)));
+            finalDrink.put(hour, (drink.get(hour))/finalPeople.get(hour));
+
+            logger.info("Final people: " + finalPeople.toString() + "\nfood: "+food.toString()+
+                    "\ndrink: "+drink.toString());
+        }
+
+        for(String h:hours){
+            finalFood.putIfAbsent(h, 0.0);
+            finalDrink.putIfAbsent(h, 0.0);
         }
 
         addPredictionsToCategoryStatistics(result.predictions(), hour);

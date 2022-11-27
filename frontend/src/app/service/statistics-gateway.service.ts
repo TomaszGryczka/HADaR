@@ -11,6 +11,8 @@ export class StatisticsGatewayService {
 
   private readonly apiPeopleUrl = "https://hadar-backend.azurewebsites.net/people";
 
+  private readonly apiFoodDrinkUrl = "https://hadar-backend.azurewebsites.net/food-drink";
+
   constructor(private http: HttpClient) {
   }
 
@@ -21,6 +23,10 @@ export class StatisticsGatewayService {
   getPeopleChartStatistics(): Observable<FinalPeoplePerHour> {
       return this.http.get<FinalPeoplePerHour>(this.apiPeopleUrl);
     }
+
+  getFoodDrinkChartStatistics(): Observable<FinalPeoplePerHour[]> {
+        return this.http.get<FinalPeoplePerHour[]>(this.apiFoodDrinkUrl);
+      }
 
 }
 

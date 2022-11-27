@@ -1,0 +1,7 @@
+<div *ngIf="!!foodChartData && foodChartId" class="w-75 ms-5" id="center_chart2">
+  <canvas [id]=foodChartId>{{foodChart}}</canvas>
+</div>
+
+<div *ngIf="!!drinkChartData && drinkChartId" class="w-75 ms-5" id="center_chart3">
+  <canvas [id]=drinkChartId>{{drinkChart}}</canvas>
+</div>
