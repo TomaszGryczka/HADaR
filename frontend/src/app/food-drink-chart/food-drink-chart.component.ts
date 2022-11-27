@@ -28,7 +28,7 @@ export class FoodDrinkChartComponent implements AfterViewInit, OnChanges {
       setTimeout(() => {
         this.createFoodChart();
         this.createDrinkChart();
-      }, 0);
+      }, 500);
     }
 
      ngOnChanges(changes: SimpleChanges) {

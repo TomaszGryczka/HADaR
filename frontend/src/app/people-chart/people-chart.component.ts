@@ -22,7 +22,7 @@ export class PeopleChartComponent implements AfterViewInit, OnChanges {
   ngAfterViewInit() {
     setTimeout(() => {
       this.createPeopleChart();
-    }, 0);
+    }, 500);
   }
 
    ngOnChanges(changes: SimpleChanges) {

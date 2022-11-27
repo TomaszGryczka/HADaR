@@ -21,7 +21,7 @@ export class CategoryChartComponent implements AfterViewInit, OnChanges {
   ngAfterViewInit() {
     setTimeout(() => {
       this.createChart();
-    }, 0);
+    }, 500);
   }
 
    ngOnChanges(changes: SimpleChanges) {
