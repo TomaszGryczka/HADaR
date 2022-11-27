@@ -7,7 +7,7 @@ Projekt S zrealizowany w ramach przedmiotu Wprowadzenie do aplikacji i rozwiąza
 ## Opis projektu
 Projekt zakłada rozpoznawanie czynności, wykonywanych przez ludzi, uchwyconych na zdjęciach zrobionych przez kamery monitorujące sale lokali użytkowych
 (typu kluby lub sale konferencyjne). Po wykryciu odpowiednich czynności, wykonywane jest zestawienie przedstawiające w jakich godzinach, największa liczba
-liczbu wykonuje wybrane czynności. W zależności od wymagań użytkownika możliwe jest sprawdzanie takich czynności jak jedzenie, picie, tańczenie. Dzięki takim 
+ludzi wykonuje wybrane czynności. W zależności od wymagań użytkownika możliwe jest sprawdzanie takich czynności jak jedzenie, picie, tańczenie. Dzięki takim 
 informacjom użytkownicy mogą podjąć decyzję w jakich godzinach statystycznie potrzebna jest większa obsługa lokalu lub skupienie pracowników na poszczególnych usługach.
 ## Diagram
 ![](images/diagram.png)
@@ -20,9 +20,8 @@ informacjom użytkownicy mogą podjąć decyzję w jakich godzinach statystyczni
   - Użytkownik wchodzi na stronę [link](https://hadar-statistics.azurewebsites.net/)
   - Użytkownik wybiera zdjęcie które chce przenalizować, wybiera godzinę wykonania zdjęcia, klika guzik submit (powtarza dla wszystkich posiadanych zdjęć)
   - Użytkownik otrzymuje wykresy pokazujące jaki procent wszystkich wykonywanych czynności w każdej godzinie stanowi poszczególna czynność
-## Stos technologiczny
-- Java
-- Spring Boot
-- Angular
-- Microsoft Azure
-- Bootstrap
+## Schemat działania
+- zdjęcia wysłane przez użytkownika są magazynowane w storage'u 
+- storage wysyła zdjęcia do custom vision gdzie wykrywane są odpowiednie czynności oraz przedmioty
+- liczba zliczonych elementów jest wysyłana do back endu gdzie tworzone są wykresy z częstotliwością wystąpienia
+- wykresy poprzez front end są wyświetlane użytkownikowi
