@@ -7,7 +7,9 @@ import {Observable} from "rxjs";
 })
 export class StatisticsGatewayService {
 
-  private readonly apiUrl = "https://hadar-backend.azurewebsites.net/statistics";
+  private readonly apiUrl = "http://localhost:8080/statistics";
+
+  private readonly apiPeopleUrl = "http://localhost:8080/people";
 
   constructor(private http: HttpClient) {
   }
@@ -15,6 +17,11 @@ export class StatisticsGatewayService {
   getChartStatistics(): Observable<ChartData> {
     return this.http.get<ChartData>(this.apiUrl);
   }
+
+  getPeopleChartStatistics(): Observable<FinalPeoplePerHour> {
+      return this.http.get<FinalPeoplePerHour>(this.apiPeopleUrl);
+    }
+
 }
 
 export interface ChartData {
@@ -24,6 +31,10 @@ export interface ChartData {
   hugging: Hugging;
   eating: Eating;
   fighting: Fighting;
+}
+
+export interface PeopleChartData {
+  finalPeople: FinalPeoplePerHour;
 }
 
 export interface Calling {
@@ -62,4 +73,18 @@ export interface AverageActionsPerHour {
   2: number;
   3: number;
   4: number;
+}
+
+export interface FinalPeoplePerHour {
+  "18"?: number;
+  "19"?: number;
+  "20"?: number;
+  "21"?: number;
+  "22"?: number;
+  "23"?: number;
+  "0"?: number;
+  "1"?: number;
+  "2"?: number;
+  "3"?: number;
+  "4"?: number;
 }

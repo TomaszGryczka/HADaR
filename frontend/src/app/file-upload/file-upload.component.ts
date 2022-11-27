@@ -24,7 +24,7 @@ export class FileUploadComponent implements OnInit {
     this.uploadImageForm = this.formBuilder.group({
       image: new FormControl(null, [Validators.required, requiredFileType(['png','jpg','jpeg'])]),
       imageSource: new FormControl(null, [Validators.required]),
-      hour: new FormControl(null, [Validators.required, hourRange(16, 4)])
+      hour: new FormControl(null, [Validators.required, hourRange(18, 4)])
     });
 
   }

@@ -8,13 +8,15 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {FileUploadComponent} from './file-upload/file-upload.component';
 import {HttpClientModule} from "@angular/common/http";
 import { CategoryChartComponent } from './category-chart/category-chart.component';
+import { PeopleChartComponent } from './people-chart/people-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HadarUploadImagesComponent,
     FileUploadComponent,
-    CategoryChartComponent
+    CategoryChartComponent,
+    PeopleChartComponent
   ],
   imports: [
     BrowserModule,

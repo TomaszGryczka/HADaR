@@ -13,7 +13,6 @@ export class CategoryChartComponent implements AfterViewInit, OnChanges {
   chartData?: ChartConfig;
 
   chart: any;
-
   chartId?: string;
 
   constructor() {
@@ -25,13 +24,15 @@ export class CategoryChartComponent implements AfterViewInit, OnChanges {
     }, 0);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (this.chartData) {
-      if (this.chart) {
-        this.chart.destroy();
-      }
-      this.createChart();
-    }
+   ngOnChanges(changes: SimpleChanges) {
+
+   if (this.chartData) {
+         if (this.chart) {
+           this.chart.destroy();
+         }
+         this.createChart();
+       }
+
   }
 
   createChart() {
@@ -85,6 +86,7 @@ export class CategoryChartComponent implements AfterViewInit, OnChanges {
       }
     }
   }
+
 }
 
 

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AverageActionsPerHour, StatisticsGatewayService} from "./service/statistics-gateway.service";
+import {AverageActionsPerHour, FinalPeoplePerHour, StatisticsGatewayService} from "./service/statistics-gateway.service";
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,8 @@ import {AverageActionsPerHour, StatisticsGatewayService} from "./service/statist
 export class AppComponent implements OnInit {
   title = 'frontend';
   chartConfigs?: ChartConfig[];
+
+  peopleChartConfig?: PeopleChartConfig;
 
   constructor(private statisticsGateway: StatisticsGatewayService) {
   }
@@ -20,7 +22,9 @@ export class AppComponent implements OnInit {
 
   fetchChartData(allFilesUploaded: boolean) {
     if (allFilesUploaded) {
+
       this.statisticsGateway.getChartStatistics().subscribe(resp => {
+
         this.chartConfigs = [
           {
             categoryName: "Calling",
@@ -55,6 +59,18 @@ export class AppComponent implements OnInit {
         ];
       });
 
+      this.statisticsGateway.getPeopleChartStatistics().subscribe(resp =>{
+
+      this.peopleChartConfig = {
+      categoryName: "People",
+      finalPeople: resp,
+      colour: "Brown"
+      }
+
+
+
+      });
+
     }
   }
 }
@@ -62,5 +78,11 @@ export class AppComponent implements OnInit {
 export interface ChartConfig {
   categoryName: string,
   averageActionsPerHour: AverageActionsPerHour,
+  colour: string
+}
+//DODANE
+export interface PeopleChartConfig {
+  categoryName: string,
+  finalPeople: FinalPeoplePerHour,
   colour: string
 }
