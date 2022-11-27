@@ -10,6 +10,7 @@ Projekt zakłada rozpoznawanie czynności, wykonywanych przez ludzi, uchwyconych
 liczbu wykonuje wybrane czynności. W zależności od wymagań użytkownika możliwe jest sprawdzanie takich czynności jak jedzenie, picie, tańczenie. Dzięki takim 
 informacjom użytkownicy mogą podjąć decyzję w jakich godzinach statystycznie potrzebna jest większa obsługa lokalu lub skupienie pracowników na poszczególnych usługach.
 ## Diagram
+![](images/diagram.png)
 ## Opis funkcjonalności
 - Przed pierwszym użyciem programu należy go przetrenować na danych dostosowanych do użytkownika
   - Użytkownik dostarcza nagrania lub zdjęcia z monitoringu lokalu dla którego później będzie on używać programu
@@ -19,3 +20,9 @@ informacjom użytkownicy mogą podjąć decyzję w jakich godzinach statystyczni
   - Użytkownik wchodzi na stronę [link](https://hadar-statistics.azurewebsites.net/)
   - Użytkownik wybiera zdjęcie które chce przenalizować, wybiera godzinę wykonania zdjęcia, klika guzik submit (powtarza dla wszystkich posiadanych zdjęć)
   - Użytkownik otrzymuje wykresy pokazujące jaki procent wszystkich wykonywanych czynności w każdej godzinie stanowi poszczególna czynność
+## Stos technologiczny
+- Java
+- Spring Boot
+- Angular
+- Microsoft Azure
+- Bootstrap
